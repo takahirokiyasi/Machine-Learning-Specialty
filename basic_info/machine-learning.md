@@ -207,8 +207,30 @@ Q学習では、期待値の見積もりを現在推定されている値の最�
 ## Deep Q Network(DQN)
 DQNでは、状態と価値をこれまで得た報酬で近似するQ関数を、ニューラルネットワークで表現する。
 入力は状態で、出力層の各ノードは各行動の価値
-### Supeervised Learning Policy Network(SL Policy)
 
+# AlpahGo
+教師あり学習フェーズと強化学習フェーズの２段階で囲碁の強さを高める
+## 教師あり学習フェーズ
+### Supeervised Learning Policy Network(SL Policy)
+人間の譜面を教師データとして次の盤面を予測する
+入力が現在の譜面状態で出力が次の譜面状態
+### Rollout Policy
+SL policyとほぼ同様
+予測性能を下げる代わりに計算を高速にした
+
+## 強化学習フェーズ
+### Reinforcement Learning Policy Network(RL Policy)
+SL Policy同士で対戦させ、勝った方を方策勾配法で強化をしていき、これを繰り返す
+### Value Network
+RL Policy同士で対戦し、各盤面の勝率を知る。
+これを使って入力を現在の盤面状態　出力を入力盤面の勝率
+教師データをRL Policyで作成した譜面で学習する
+
+最後に学習済みの各ネットワークをモンテカルロ木探索（MCTS）のアルゴリズムを行動選択部分に組み込む
+
+# 深層生成モデル
+## WaveNet
+音声生成の分野に大きく影響を与えたモデル。最初の入力から次の出力を次々に予測していくというアプローチをベースにCNNで構成されている
 
 # 人
 ## ジェフリー・ヒントン
