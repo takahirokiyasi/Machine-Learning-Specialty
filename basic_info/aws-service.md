@@ -14,3 +14,31 @@
 
 ## 推論パイプライン（inferece pipeline）
 数行のscikit-learnまたはSparkコードのみを使用して、独自の変換ロジックを実装できる
+
+## 組み込みアルゴリズム
+### 分類・回帰
+- Linear Learner
+- Factorization Machines
+- XGBoost Algorithm
+- K-Nearest Neighbors
+### 画像分類
+- Image Classification Algorithm
+### 物体検出
+- Object Detection Algorithm
+### 機械翻訳
+- Sequence2Sequence
+### クラスタリング
+- K-Means Algorithm
+### 特徴量の抽出
+- Principal Component Analysis(PCA)
+### トピックモデリング
+- Latent Dirichlet Allocation(LDA)
+- Neural Topic Model(NTM)
+### 時系列予測
+- DeepAR Forecasting
+### Word2Vec
+- BlazingText
+### 異常検知
+- Randam Cut Forest
+
+
