@@ -64,10 +64,24 @@ Amazon SageMakerで構築した機械学習モデル用に独自のワークフ�
 - Neural Topic Model(NTM)
 ### 時系列予測
 - DeepAR Forecasting
-### Word2Vec
+### Word2Vec・テキスト分類
 - BlazingText
+教師ありモードと教師なしモード両方提供されている
+word2Vecは感情分析、名前付きエンティティ認識、機械翻訳など、多くの下流の自然言語処理（NLP）のタスク
+テキスト分類は、ウェブ検索、情報検索、ランキング、文書分類などのタスク
 ### 異常検知
 - Randam Cut Forest
+
+## RecordIO形式のデータ
+組み込みアルゴリズムはRecordIO形式の対応していることがあり、この形式を使うことによって学習時間を大幅に改善することができる。S3への保存コストは上がる
+
+## IAM関連
+### IAM IDベースのポリシー
+IAMユーザーとかIAMロールのポリシーにsagemakerへのアクセスの許可や制限を入れることでアクセスコントロールできる
+### リソースタグに基づく認証
+上の進化版で特定タグがついてるノートブックへアクセスの許可や制限をすることがポリシーでできる。
+
+https://dev.classmethod.jp/articles/sagemaker-restrict-access/
 
 ## Sagemeker Neo
 Amazon SageMaker Neoを使うことで機械学習モデルをコンパイルすることが出来る。モデルのコンパイルを行うことで特定のデバイスに最適化を行うことが出来、推論速度の高速化と省メモリ化を実現できる
