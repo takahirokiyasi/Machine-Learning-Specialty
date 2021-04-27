@@ -69,6 +69,23 @@ Amazon SageMakerで構築した機械学習モデル用に独自のワークフ�
 ### 異常検知
 - Randam Cut Forest
 
+## Sagemeker Neo
+Amazon SageMaker Neoを使うことで機械学習モデルをコンパイルすることが出来る。モデルのコンパイルを行うことで特定のデバイスに最適化を行うことが出来、推論速度の高速化と省メモリ化を実現できる
+
+よく画像分類モデルを最適化するのに使う
+
+対応モデル:
+MXNet および TensorFlow でトレーニングされた AlexNet、ResNet、VGG、Inception、MobileNet、SqueezeNet、DenseNetなどのモデル
+XGBoostでトレーニングされたランダムカットフォレストモデルなど
+
+## Production Variant
+ホストしたいモデルと、それをホストするために配置するリソースを特定します。複数のモデルをデプロイする場合は、バリアントウェイトを指定することで、モデル間のトラフィックをどのように分配するかをAmazon SageMakerに伝えます。
+インスタンスタイプ選べたり
+
+## boto3 command
+### describe_training_job
+create_training_job（）メソッドを呼び出してトレーニングジョブを開始した後、トレーニングジョブの進行状況に関するステータスを取得できる
+
 # Rekognition
 AWS CLI または Rekognition APIを使用
 画像から人物特定とかテキスト抽出とか人の装備とかをチェックするのが得意
@@ -108,3 +125,14 @@ Amazon Rekognition Videoは、ストリーミングビデオの分析を開始�
 
 
 # Glue
+## Glue ジョブ
+### Python シェル
+numpy、pandas、sklearnなどのライブラリに依存するGlueジョブをサポート
+### PySpark
+主にApacheSparkのPythonAPIを使用して記述されたGlueジョブをサポート
+## ML transform ジョブ
+
+## Glue Crawler（クローラー））
+データストアを調べて、データカタログに登録してくれる。定期実行をする事で、スキーマやパーティションの定期的な自動更新も可能
+クローラー作成してs3のデータに対してクローラーを走らせてからAthenaAthenaでクエリ実行がよくあるパターン
+https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/
