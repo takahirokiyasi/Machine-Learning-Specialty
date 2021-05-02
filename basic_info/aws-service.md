@@ -10,6 +10,9 @@
 ### SageMaker Ground Truth
 ラベリングサービス
 
+## SageMaker Clearify
+ブラックボックスになりがちな機械学習のモデルの解釈可能性・公平性を明らかにする際の支援をする機能
+
 ## モデルのトレーニング
 ### Amazon SageMaker Experiments
 機械学習モデルへの繰り返し処理を追跡および調整するのに使う。
@@ -94,8 +97,9 @@ record io形式だとさらに高速
 https://docs.aws.amazon.com/sagemaker/latest/dg/algo-kmeans-tech-notes.html
 
 ### トピックモデリング
+トピックモデリングはクラスタリングとは違い複数のクラスタに属することができる
 - Latent Dirichlet Allocation(LDA・潜在的ディレクレ配分)
-観察は文書と呼ばれます。機能セットは語彙と呼ばれます。特徴は単語と呼ばれます。そして、結果のカテゴリはトピックと呼ばれます。
+観察は文書と呼ばれます。機能セットはトピックと呼ばれます。特徴は単語と呼ばれます。そして、結果のカテゴリはトピックと呼ばれます。
 - Neural Topic Model(NTM・ニューラルトピックモデル)
 ### 時系列予測
 - DeepAR Forecasting

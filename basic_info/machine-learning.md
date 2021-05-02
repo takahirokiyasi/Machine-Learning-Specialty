@@ -298,3 +298,8 @@ tf-idfは(2/12)*0=0 (3/12)*0=0
 
 # 混合行列
 ## AUC
+ROCの面積
+値が1に近いほど判別能が高いことを示す。判別能がランダムであるとき、AUC = 0.5となる。
+## ROC
+https://oku.edu.mie-u.ac.jp/~okumura/stat/ROC.html
+
