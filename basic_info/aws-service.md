@@ -88,9 +88,13 @@ record io形式だとさらに高速
 ### 物体検出
 - Object Detection Algorithm
 ### 機械翻訳
-- Sequence2Sequence
+- Sequence2Sequence(seq2seq)
+翻訳したり対話モデルを作ったり
+EncoderとDecoderを使う
 ### クラスタリング
 - K-Means Algorithm
+kはクラスタリングの数を決めるハイパーパラメータ
+
 レコメンドなどで使用
 
 初期クラスターセンターを決める方法がランダムアプローチとK-means ++という方法がある
@@ -100,6 +104,9 @@ https://docs.aws.amazon.com/sagemaker/latest/dg/algo-kmeans-tech-notes.html
 トピックモデリングはクラスタリングとは違い複数のクラスタに属することができる
 - Latent Dirichlet Allocation(LDA・潜在的ディレクレ配分)
 観察は文書と呼ばれます。機能セットはトピックと呼ばれます。特徴は単語と呼ばれます。そして、結果のカテゴリはトピックと呼ばれます。
+
+LDAはbag of words なので単語の順序は重要ではない
+
 - Neural Topic Model(NTM・ニューラルトピックモデル)
 ### 時系列予測
 - DeepAR Forecasting
@@ -118,6 +125,10 @@ IPアドレス,エンティティの情報をベクトル化し、そのベク�
 - PCA
 通常モード：データがまばらで特徴量もそんなにない時
 ランダムモード：多数の観測値と特徴をもつデータセットの場合
+### セマンティックセグメンテーション
+画像内をピクセル単位でどこが何を示しているかラベルづけしてくれる。
+https://jp.mathworks.com/solutions/image-video-processing/semantic-segmentation.html
+- Semantic Segmentation
 
 ### その他・注意点
 #### 教師なし学習アルゴリズムを実行する場合
