@@ -1,5 +1,8 @@
 # SageMaker
 
+## ネットワーク構成
+https://dev.classmethod.jp/articles/sagemaker-network-vpc/
+
 ## モデルの作成
 ### SageMaker Studio
 #### SageMaker Studio Notebooks
@@ -14,6 +17,8 @@
 ブラックボックスになりがちな機械学習のモデルの解釈可能性・公平性を明らかにする際の支援をする機能
 
 ## モデルのトレーニング
+生成したモデルはmodel.tar.gzの形で保存される
+create_training_job呼び出しOutputDataConfigS3OutputPathパラメーターで指定されたS3バケットに
 ### Amazon SageMaker Experiments
 機械学習モデルへの繰り返し処理を追跡および調整するのに使う。
 入力パラメータや構成、結果等を自動的に補足し、これらを「実験結果（experiments）」として保存することで、繰り返し作業を管理しやす区する。
@@ -63,6 +68,9 @@ record io形式だとさらに高速
 
 #### ローカルモード
 オンプレミスでコンテナを起動し、学習や推論を行う
+
+## 暗号化について
+バッチ処理のためのノード間通信はない
 
 ## Edge Manager
 
@@ -236,6 +244,13 @@ https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/
 ## S3からのロードのコマンド
 COPYを使用すると早い
 INSERTとか使うより速い
+
+# Kinesis
+## Kinesis Data Analytics
+### Kinesis Data Analytics for SQL
+ソースデータを直接取り込むことはできない。
+Kinesis Firehoseとラムダの組み合わせを使用すると、少なくとも1分または1M​​Bのデータのバッファリング遅延が発生するため、リアルタイムではない。
+データをKinesis Data Streamsに取り込み、すぐにストリームをKinesis Data Analytics for SQLベースの分析に書きこむことでリアルタイムの分析を行うことができる
 
 # その他
 ## データウェアハウスとデータレイクの違い
