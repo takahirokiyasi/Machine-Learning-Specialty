@@ -37,6 +37,10 @@ GPUを任意のSageMakerインスタンスに接続できるようにするこ�
 ハイパーパラメータの組み合わせが最良の結果を得る可能性が高いかを推測し、トレーニングジョブを実行してこれらの値をテスト
 回帰問題のようにパラメータをチューニングしていく
 
+### 早期終了
+現在のトレーニングジョブの目的メトリックの値が、同じエポックまでの以前のトレーニングジョブの目的メトリックの移動平均の中央値よりも悪い場合早期終了する
+https://dev.classmethod.jp/articles/2018advent-calendar-sagemaker-20181219/
+
 ## モデルのデプロイ
 ### Amazon SageMaker Model Monitor
 機械学習モデルの品質についてリアルタイムの継続的な監視を行う。
@@ -100,7 +104,6 @@ record io形式だとさらに高速
 ## 組み込みアルゴリズム
 ### 分類・回帰
 - Linear Learner
-- Factorization Machines（因数分解機）
 - XGBoost Algorithm(Tenserflowのアルゴとしても使える)
 - K-Nearest Neighbors
 サンプリング・次元削減・インデックス作成の3ステップがある
@@ -127,15 +130,31 @@ https://docs.aws.amazon.com/sagemaker/latest/dg/algo-kmeans-tech-notes.html
 観察は文書と呼ばれます。機能セットはトピックと呼ばれます。特徴は単語と呼ばれます。そして、結果のカテゴリはトピックと呼ばれます。
 
 LDAはbag of words なので単語の順序は重要ではない
+レコメンドで使われる
 
 - Neural Topic Model(NTM・ニューラルトピックモデル)
+
+### レコメンド
+- Factorization Machines（因数分解機）
+レコメンドシステムでよく使われる
+組み合わせ特徴量を扱う教師あり学習のモデル
+
 ### 時系列予測
 - DeepAR Forecasting
 ### Word2Vec・テキスト分類
 - BlazingText
-教師ありモードと教師なしモード両方提供されている
+教師ありモード（word2vec）と教師なしモード（テキスト分類）両方提供されている
 word2Vecは感情分析、名前付きエンティティ認識、機械翻訳など、多くの下流の自然言語処理（NLP）のタスク
 テキスト分類は、ウェブ検索、情報検索、ランキング、文書分類などのタスク
+https://dev.classmethod.jp/articles/getting-started-amazon-sagemaker-built-in-algorithms-blazingtext/
+
+### Object2Vec
+高次元のベクトルを、できるだけ情報量を減らさずに次元削減し、類似した物体を近距離に配置する
+物事の関係性を計算するもの
+- 動画のリコメンデーション
+- マルチラベルドキュメント分類
+- 文章類似性
+
 ### 異常検知
 - Randam Cut Forest
 時系列データのスパイク、周期性の中断、分類できないデータポイントなどを検出
@@ -165,6 +184,25 @@ SageMakerの教師あり学習アルゴリズムの場合、ターゲット変�
 #### トレーニングデータとテストデータでの精度がどちらも悪い時
 正則化をやめる
 特徴量を増やす
+
+#### 増分学習（Incremental learning）
+学習済みのモデルを追加で学習させること
+モデルの学習時には最初にモデルの各重み付けがランダムに初期化される。
+増分学習では、学習済みのモデルの重み付けで初期化した上で新たに学習をはじめる
+物体検出アルゴリズム、画像分類アルゴリズム、セマンティックセグメンテーションアルゴリズムの3つの組み込みアルゴリズムのみ対応
+
+#### 再起動時のデータの保存
+`/home/ec2-user/SageMaker`フォルダー内に保存されたファイルとデータのみが、ノートブックインスタンスセッション間で保持され
+このディレクトリの外部に保存されているファイルとデータは、ノートブックインスタンスが停止して再起動すると上書きされます。
+
+#### ネットワーク分離
+Amazon S3などの他のAWSサービスに対しても、コンテナーはアウトバウンドネットワーク呼び出しを行うことができなくなる
+
+Chainer
+PyTorch
+Scikit-learn
+SageMaker Reinforcement Learning
+の4つはサポートしていない
 
 ## IAM関連
 ### IAM IDベースのポリシー
@@ -255,6 +293,9 @@ numpy、pandas、sklearnなどのライブラリに依存するGlueジョブを�
 ## Glue Crawler（クローラー））
 データストアを調べて、データカタログに登録してくれる。定期実行をする事で、スキーマやパーティションの定期的な自動更新も可能
 クローラー作成してs3のデータに対してクローラーを走らせてからAthenaAthenaでクエリ実行がよくあるパターン
+
+クローラーを走らせることでS3データに対してSQLクエリが発行できる
+
 https://dev.classmethod.jp/articles/glue-crawler-athena-tutorial/
 
 # Redshift

@@ -325,6 +325,7 @@ ROCの面積
 値が1に近いほど判別能が高いことを示す。判別能がランダムであるとき、AUC = 0.5となる。
 ### ROC
 https://oku.edu.mie-u.ac.jp/~okumura/stat/ROC.html
+2項分類モデルの最良の評価指標とも言われる
 
 ## 表
 ### 残差プロット
@@ -333,6 +334,10 @@ https://oku.edu.mie-u.ac.jp/~okumura/stat/ROC.html
 0近傍にデータが揃っていればOK
 
 変な傾向とかがあれば怪しい
+
+### 箱ひげ図
+外れ値検出のある箱ひげ図
+https://bellcurve.jp/statistics/course/5222.html
 
 # 自然言語処理
 ## 典型的な前処理
