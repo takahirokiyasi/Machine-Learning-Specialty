@@ -7,7 +7,8 @@ https://dev.classmethod.jp/articles/sagemaker-network-vpc/
 ### SageMaker Studio
 #### SageMaker Studio Notebooks
 
-### SageMaker Autopilot
+### SageMaker Autopilot(オートパイロット)
+sagemakerでAutoMLするためのやつ
 自動で、未加工データを検証、機能プロセッサーを適用し、最適なアルゴリズムセットを選出、複数のモデルをトレーニング及び調整し、パフォーマンスの追跡とパフォーマンスに基づくモデルのランク付けを行う
 
 ### SageMaker Ground Truth
@@ -85,8 +86,9 @@ OCRとかでスキャンしたやつを最後に人間でチェックすると�
 
 
 ### デプロイ方式
-#### 永続エンドポイント
+#### 推論エンドポイント
 リアルタイム推論。deployメソッド。APIで取得。
+SageMakerの推論エンドポイントの更新はダウンタイム無しで実現できる
 #### バッチ変換
 データセット全体を推論。create_transform_jobメソッド。結果はS3に保存。
 以下のユースケースで使用される。
@@ -126,7 +128,9 @@ OCRとかでスキャンしたやつを最後に人間でチェックすると�
 ### 機械翻訳
 - Sequence2Sequence(seq2seq)
 翻訳したり対話モデルを作ったり　スペル修正モデルを作ったり
+要約したり
 EncoderとDecoderを使う
+
 ### クラスタリング
 - K-Means Algorithm
 kはクラスタリングの数を決めるハイパーパラメータ
@@ -156,6 +160,7 @@ LDAはbag of words なので単語の順序は重要ではない
 
 ### 時系列予測
 - DeepAR Forecasting
+
 ### Word2Vec・テキスト分類
 - BlazingText
 教師ありモード（word2vec）と教師なしモード（テキスト分類）両方提供されている
@@ -222,6 +227,7 @@ SageMaker Reinforcement Learning
 ## IAM関連
 ### IAM IDベースのポリシー
 IAMユーザーとかIAMロールのポリシーにsagemakerへのアクセスの許可や制限を入れることでアクセスコントロールできる
+
 ### リソースタグに基づく認証
 上の進化版で特定タグがついてるノートブックへアクセスの許可や制限をすることがポリシーでできる。
 
@@ -256,6 +262,11 @@ XGBoostでトレーニングされたランダムカットフォレストモデ�
 ### describe_training_job
 create_training_job（）メソッドを呼び出してトレーニングジョブを開始した後、トレーニングジョブの進行状況に関するステータスを取得できる
 
+# Deep Learning AMI
+著名なフレームワークをあらかじめ全部のせしたAMI
+CUDAとかPytorchとかもろもろ入ってる
+ちょっと最適化されてるらしい
+
 # Rekognition
 AWS CLI または Rekognition APIを使用
 画像から人物特定とかテキスト抽出とか人の装備とかをチェックするのが得意
@@ -275,6 +286,7 @@ Amazon Rekognition Videoは、ストリーミングビデオの分析を開始�
 
 # Transcribe
 音声からテキスト変換サービス
+31か国語に対応
 
 # Lex
 チャットボットサービス
